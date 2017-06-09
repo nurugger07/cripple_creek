@@ -9,19 +9,10 @@ defmodule CrippleCreek.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", CrippleCreek do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/welcome", PageController, :show
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", CrippleCreek do
-  #   pipe_through :api
-  # end
 end
